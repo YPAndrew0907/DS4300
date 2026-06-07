@@ -100,7 +100,7 @@ def build_feature_matrix(songs):
 
     numeric_features = np.column_stack(numeric_parts)
 
-
+  
     # Each genre becomes a normal feature column, the same scaler/PCA process
     # decides how it interacts with audio properties.
     genre_features = songs["genres"].astype(str).str.get_dummies(sep=";")
@@ -117,9 +117,9 @@ def build_feature_matrix(songs):
     # we think PCA needed to be used here
     # the problem here is that if we directly did
     # sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2 + ...)
-    #on the raw Spotify columns, the result would be messy because the columns live in different units.
-    # duration_ms is in hundreds of thousands,
-    # danceability is between 0 and 1, loudness is negative decibels,
+    #on the raw Spotify columns, the result would be messy because the columns live in different units. 
+    # duration_ms is in hundreds of thousands, 
+    # danceability is between 0 and 1, loudness is negative decibels, 
     # and genres are category flags. In this case we have to normalize and PCA them
     pca = PCA(whiten=True, svd_solver="full")
     features = pca.fit_transform(scaled_features).astype(np.float32)
@@ -542,7 +542,7 @@ def export_for_neo4j(
     )
 
     # we export only the upper triangle because Neo4j only needs one stored
-    # relationship for each undirected track pair.
+    # relationship for each undirected track pair. 
     upper_graph = sparse.triu(graph, k=1).tocoo()
     track_ids = songs["track_id"].tolist()
     similarity_rows = []

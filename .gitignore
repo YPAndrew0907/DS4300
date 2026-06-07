@@ -1,7 +1,0 @@
-__pycache__/
-*.pyc
-.DS_Store
-HW4/neo4j_spotify_import/
-HW4/spotify.csv
-HW4/spotify_stratified_sample_60000.csv
-HW4/spotify_stratified_sample_8000.csv
